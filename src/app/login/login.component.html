@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label for="username">Username</label>
+    <input id="username" type="text" formControlName="username"/>
+
+    <span *ngIf="loginForm.controls.username.errors?.required && (loginForm.controls.username.dirty || loginForm.controls.username.touched)" style="color: red">Username is mandatory</span>
+    <span *ngIf="loginForm.controls.username.errors?.minlength && (loginForm.controls.username.dirty || loginForm.controls.username.touched)" style="color: red">Username must be at least 3 characters</span>
+
+    <br/>
+
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password"/>
+
+    <span *ngIf="loginForm.controls.password.errors?.required && (loginForm.controls.password.dirty || loginForm.controls.password.touched)" style="color: red">Password is mandatory</span>
+    <span *ngIf="loginForm.controls.password.errors?.minlength && (loginForm.controls.password.dirty || loginForm.controls.password.touched)" style="color: red">Password must be at least 8 characters</span>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+</form>
